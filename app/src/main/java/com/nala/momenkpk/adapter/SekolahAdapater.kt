@@ -1,5 +1,7 @@
 package com.nala.momenkpk;
 
+import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,55 +9,40 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nala.momenkpk.R
-import com.nala.momenkpk.adapter.ModelClass
+import com.nala.momenkpk.holder.SekolahViewHolder
+import com.nala.momenkpk.model.ModelSekolah
 
-class Adapter(userList: List<ModelClass>) :
-    RecyclerView.Adapter<Adapter.ViewHolder>() {
-    private val userList: List<ModelClass>
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+class SekolahAdapter(private val context: Context,
+              private val daftarSekolah: ArrayList<ModelSekolah>?
+) : RecyclerView.Adapter<SekolahViewHolder>() {
+
+    private val sekolahListener: FirebaseDataListener
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SekolahViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_sekolah, parent, false)
-        return ViewHolder(view)
+        return SekolahViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val resource: Int = userList[position].getImageview()
-        val name: String = userList[position].getTextview1()
-        val msg: String = userList[position].getTextview2()
-        holder.setData(resource, name, msg)
+    override fun onBindViewHolder(holder: SekolahViewHolder, position: Int) {
 
+
+        holder.namaSekolah.text = (daftarSekolah?.get(position)?.nama)
+        holder.namaKepsek.text = (daftarSekolah?.get(position)?.Kepsek)
+        holder.view.setOnClickListener { sekolahListener.onDataClick(daftarSekolah?.get(position), position) }
 
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return daftarSekolah?.size!!
     }
 
-    //view holder class
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView
-        private val textView: TextView
-        private val textView2: TextView
-        private val daftarSekolah: RelativeLayout
 
-        fun setData(resource: Int, name: String?, msg: String?) {
-            imageView.setImageResource(resource)
-            textView.text = name
-            textView2.text = msg
-        }
-
-        init {
-            //here use xml ids
-            //give different name not like constructor
-            imageView = itemView.findViewById(R.id.imageview)
-            textView = itemView.findViewById(R.id.textview)
-            textView2 = itemView.findViewById(R.id.textview2)
-            daftarSekolah = itemView.findViewById(R.id.listSekolah)
-        }
+    interface FirebaseDataListener {
+        fun onDataClick(instrumen: ModelSekolah?, position: Int)
     }
 
     init {
-        this.userList = userList
+        sekolahListener = context as FirebaseDataListener
     }
 }

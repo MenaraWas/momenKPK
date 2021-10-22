@@ -29,19 +29,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nala.momenkpk.adapter.MainAdapter;
 import com.nala.momenkpk.model.ModelInstrumen;
+import com.nala.momenkpk.model.ModelSekolah;
 
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class SekolahActivity extends AppCompatActivity implements MainAdapter.FirebaseDataListener {
+public class SekolahActivity extends AppCompatActivity implements SekolahAdapter.FirebaseDataListener {
 
 
-    private EditText mEditNama;
-    private EditText mEditHarga;
     private RecyclerView mRecyclerView;
-    private MainAdapter mAdapter;
-    private ArrayList<ModelInstrumen> daftarBarang;
+    private SekolahAdapter sAdapter;
+    private ArrayList<ModelSekolah> daftarBarang;
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mFirebaseInstance;
 
@@ -68,6 +67,37 @@ public class SekolahActivity extends AppCompatActivity implements MainAdapter.Fi
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseApp.initializeApp(this);
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseInstance.getReference("sekolah");
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                daftarBarang = new ArrayList<>();
+                for (DataSnapshot mDataSnapshot : dataSnapshot.getChildren()) {
+                    ModelSekolah barang = mDataSnapshot.getValue(ModelSekolah.class);
+                    barang.setKey(mDataSnapshot.getKey());
+                    daftarBarang.add(barang);
+                }
+
+                sAdapter = new SekolahAdapter(SekolahActivity.this, daftarBarang);
+                mRecyclerView.setAdapter(sAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(SekolahActivity.this,
+                        databaseError.getDetails() + " " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        });
+
 
 
     }
@@ -84,10 +114,9 @@ public class SekolahActivity extends AppCompatActivity implements MainAdapter.Fi
     }
 
     @Override
-    public void onDataClick(@Nullable final ModelInstrumen barang, int position) {
+    public void onDataClick(@Nullable final ModelSekolah barang, int position) {
 
         startActivity(new Intent(SekolahActivity.this, ChartActivity.class));
         finish();
     }
-
 }

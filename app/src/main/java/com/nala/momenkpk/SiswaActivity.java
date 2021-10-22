@@ -90,7 +90,7 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
                 imgForm.setVisibility(View.VISIBLE);
 
 //                total=(nilai1+nilai2+nilai3+nilai4+nilai5);
-                tvNilai.setText("15" + " points");
+                tvNilai.setText(Item1 + " points");
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
