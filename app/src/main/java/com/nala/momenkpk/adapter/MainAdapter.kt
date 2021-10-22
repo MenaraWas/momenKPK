@@ -32,6 +32,8 @@ class MainAdapter(private val context: Context,
     var nilai3 : String = ""
     var nilai4 : String = ""
     var nilai5 : String = ""
+    var angka1 : Int = 0
+    var angka2 : Int = 0
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -47,25 +49,29 @@ class MainAdapter(private val context: Context,
         holder.view.setOnClickListener { listener.onDataClick(daftarInstrumen?.get(position), position) }
 
         holder.rdGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+
+
+
             nilai = holder.radioButtonOpsi.getText().toString()
             nilai2 = holder.radioButtonOpsi2.getText().toString()
             nilai3 = holder.radioButtonOpsi3.getText().toString()
             nilai4 = holder.radioButtonOpsi4.getText().toString()
             nilai5 = holder.radioButtonOpsi5.getText().toString()
 
-            Toast.makeText(context, nilai, Toast.LENGTH_SHORT).show()
-        })
-
-
-        val intent = Intent("custom-message")
+            val intent = Intent("custom-message")
         //            intent.putExtra("quantity",Integer.parseInt(quantity.getText().toString()));
 
             intent.putExtra("item", nilai)
-            intent.putExtra("item2", nilai2)
-            intent.putExtra("item3", nilai3)
-            intent.putExtra("item4", nilai4)
-            intent.putExtra("item5", nilai5)
+            intent.putExtra("item", nilai2)
+            intent.putExtra("item", nilai3)
+            intent.putExtra("item", nilai4)
+            intent.putExtra("item2", nilai5)
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+
+        })
+
+
+//
 
     }
     

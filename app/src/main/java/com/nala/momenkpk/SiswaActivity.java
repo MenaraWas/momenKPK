@@ -37,7 +37,9 @@ import com.nala.momenkpk.model.ModelInstrumen;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SiswaActivity extends AppCompatActivity implements MainAdapter.FirebaseDataListener  {
 
@@ -47,18 +49,20 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
     private RadioGroup rdGroup;
     private RadioButton rdButton;
     private ArrayList<ModelInstrumen> daftarBarang;
+    private ArrayList<Integer> daftarNilai;
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mFirebaseInstance;
     private TextView tvNilai;
     private ImageView imgForm;
     private ImageView imgLogout;
-    private Integer total;
+    private double total;
     private String Item1;
     private String Item2;
     private String Item3;
     private String Item4;
     private String Item5;
-    private Integer nilai1,nilai2,nilai3,nilai4,nilai5;
+    private String nilai1,nilai2,nilai3,nilai4,nilai5;
+    private BreakIterator radioButtonOpsi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +93,7 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
                 mRecyclerView.setVisibility(View.GONE);
                 imgForm.setVisibility(View.VISIBLE);
 
-//                total=(nilai1+nilai2+nilai3+nilai4+nilai5);
+//                total=((Item1+Item2+Item3+Item4+Item5)/0.3);
                 tvNilai.setText(Item1 + " points");
 
                 Toast toast = Toast.makeText(context, text, duration);
@@ -160,12 +164,14 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
             Item3 = intent.getStringExtra("item3");
             Item4 = intent.getStringExtra("item4");
             Item5 = intent.getStringExtra("item5");
+
         }
     };
     @Override
     public void onDataClick(@Nullable ModelInstrumen instrumen, int position) {
 
     }
+
 
     public void logout(View view) {
 
