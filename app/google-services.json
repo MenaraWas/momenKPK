@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "150347040667",
+    "firebase_url": "https://momenkpk-1a1cf-default-rtdb.firebaseio.com",
+    "project_id": "momenkpk-1a1cf",
+    "storage_bucket": "momenkpk-1a1cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150347040667:android:8bd38f72687a472bdd833e",
+        "android_client_info": {
+          "package_name": "com.nala.momenkpk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150347040667-plp2h7buuvudbi24b0007qe2amipd1qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0dQi4xU_h0uhJ0JpO0gL9d1bEtnov9g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150347040667-plp2h7buuvudbi24b0007qe2amipd1qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

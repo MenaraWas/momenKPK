@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">momenKPK</string>
+    <string name="pilih_database">Pilih Database</string>
+
+    <string-array name="list_instrumen">
+        <item>data_instrumen</item>
+        <item>data_instrumen-siswa</item>
+        <item>data_instrumen-guru</item>
+        <item>data_instrumen-pengawas</item>
+        <item>data_instrumen-kepsek</item>
+    </string-array>
+</resources>

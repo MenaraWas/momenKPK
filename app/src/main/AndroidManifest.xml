@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nala.momenkpk">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MomenKPK">
+        <activity
+            android:name=".ChartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DataActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DoneActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PengawasActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GuruActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PartisipanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SiswaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CRUDActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".edit_instr"
+            android:exported="true" />
+        <activity
+            android:name=".acivity_item_Instrumen"
+            android:exported="true" />
+        <activity
+            android:name=".CRUDInstrumenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KepsekActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
