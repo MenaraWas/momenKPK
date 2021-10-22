@@ -2,6 +2,7 @@ package com.nala.momenkpk;
 
 import static com.nala.momenkpk.CRUDActivity.setWindowFlag;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +37,7 @@ import com.nala.momenkpk.model.ModelPartisipan;
 
 import java.util.ArrayList;
 
-public class ChartActivity extends AppCompatActivity {
+public class ChartActivity extends AppCompatActivity implements MainAdapter.FirebaseDataListener {
 
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
@@ -95,6 +96,43 @@ public class ChartActivity extends AppCompatActivity {
         bar.setData(barData);
         bar.animateY(2000);
 
+        //firebase panggil
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseApp.initializeApp(this);
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseInstance.getReference("pertanyaan");
+        mDatabaseReference.child("data_instrumen").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                daftarBarang = new ArrayList<>();
+                for (DataSnapshot mDataSnapshot : dataSnapshot.getChildren()) {
+                    ModelInstrumen barang = mDataSnapshot.getValue(ModelInstrumen.class);
+                    barang.setKey(mDataSnapshot.getKey());
+                    daftarBarang.add(barang);
+                }
+
+                mAdapter = new MainAdapter(ChartActivity.this, daftarBarang);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(ChartActivity.this,
+                        databaseError.getDetails() + " " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+
+    }
+
+    @Override
+    public void onDataClick(@Nullable ModelInstrumen instrumen, int position) {
 
     }
 }

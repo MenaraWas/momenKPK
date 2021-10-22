@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         bt_hasil.setOnClickListener {
-            val intent = Intent(this@MainActivity, ChartActivity::class.java)
+            val intent = Intent(this@MainActivity, SekolahActivity::class.java)
             startActivity(intent)
         }
 

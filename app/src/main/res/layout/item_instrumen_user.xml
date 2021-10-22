@@ -40,6 +40,7 @@
                         android:textColor="@color/black"
                         android:text="1"
                         android:buttonTint="@color/dark_blue"
+                        android:onClick="rdSatu"
                         tools:ignore="MissingConstraints" />
 
                     <RadioButton
