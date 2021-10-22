@@ -110,14 +110,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-        else if(username.contains("admin")){
+        else if(password.contains("admin")){
             // Go to MainActivity
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
 
         }
 
-        else if(username.contains("kepsek")){
+        else if(password.contains("kepsek")){
             startActivity(new Intent(LoginActivity.this, KepsekActivity.class));
             finish();
         }
@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-        else if(username.contains("pengawas")){
+        else if(password.contains("pengawas")){
             startActivity(new Intent(LoginActivity.this, PengawasActivity.class));
             finish();
         }

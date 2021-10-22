@@ -75,12 +75,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/listInstrumen"
-        android:onClick="pilihInstrumen"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="127dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="126dp"
+        android:background="@color/just_grey"
+        android:textColor="@color/black"
+        android:onClick="pilihInstrumen"
         android:text="Pilih katagori" />
 
     <ScrollView

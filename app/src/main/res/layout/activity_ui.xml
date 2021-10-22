@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+
     <View
         android:id="@+id/viewHeaderBackground"
         android:layout_height="175dp"
@@ -23,21 +23,22 @@
         android:text="Halo"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
         app:layout_constraintBottom_toBottomOf="@id/textTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textTitle"
         android:tint="@color/white"
-        android:id="@+id/logout"
+        android:onClick="logout"
+        android:id="@+id/bt_logout"
         />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardHeader"
@@ -99,7 +100,6 @@
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/panduan"/>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

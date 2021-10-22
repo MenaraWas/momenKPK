@@ -7,9 +7,52 @@
     android:background="@color/white"
     tools:context=".ChartActivity">
 
+    <View
+        android:id="@+id/viewHeaderBackground"
+        android:layout_width="406dp"
+        android:layout_height="100dp"
+        android:background="@drawable/wave_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="35dp"
+        android:text="Hasil Penelitian"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barchart"
+        android:id="@+id/barchart_hasil"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.084" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/google_medium"
+        android:text="Report Graphic"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,28 +34,17 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class PartisipanActivity extends AppCompatActivity implements UserAdapter.FirebaseDataListener  {
-
-    private ExtendedFloatingActionButton mFloatingActionButton;
-    private RecyclerView mRecyclerView;
-    private UserAdapter uAdapter;
-    private EditText mEditEmail;
-    private EditText mEditUser;
-    private EditText mEditPass;
-    private EditText mEditSekolah;
-    private EditText mEditRole;
-    private ArrayList<ModelPartisipan> daftarPartisipan;
-    private DatabaseReference mDatabaseReference;
-    private FirebaseDatabase mFirebaseInstance;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partisipan);
 
+        //set statusbar
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
         }
-
         if (Build.VERSION.SDK_INT >= 19) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 getWindow().getDecorView()
@@ -69,52 +58,11 @@ public class PartisipanActivity extends AppCompatActivity implements UserAdapter
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-
-        mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        FirebaseApp.initializeApp(this);
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseInstance.getReference("partisipan");
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                daftarPartisipan = new ArrayList<>();
-                for (DataSnapshot mDataSnapshot : dataSnapshot.getChildren()) {
-                    ModelPartisipan barang = mDataSnapshot.getValue(ModelPartisipan.class);
-                    barang.setKey(mDataSnapshot.getKey());
-                    daftarPartisipan.add(barang);
-                }
-
-                uAdapter = new UserAdapter(PartisipanActivity.this, daftarPartisipan);
-                mRecyclerView.setAdapter(uAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                Toast.makeText(PartisipanActivity.this,
-                        databaseError.getDetails() + " " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-        });
-
+        
     }
 
-    public static void setWindowFlag(Activity activity, final int bits, boolean on) {
-
-        Window win = activity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
+    private void setWindowFlag(PartisipanActivity partisipanActivity, int flagTranslucentStatus, boolean b) {
     }
-
 
     @Override
     public void onDataClick(@Nullable ModelPartisipan partisipan, int position) {

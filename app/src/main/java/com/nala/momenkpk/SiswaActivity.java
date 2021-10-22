@@ -73,7 +73,7 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
         rdGroup = findViewById(R.id.opsi);
         rdButton = findViewById(R.id.radioButton);
         imgForm = findViewById(R.id.imageForm);
-        imgLogout = findViewById(R.id.logout);
+        imgLogout = findViewById(R.id.bt_logout);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,15 +96,6 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
                 toast.show();
             }
         });
-
-        imgLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
-
-
 
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
@@ -176,4 +167,19 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
 
     }
 
+    public void logout(View view) {
+
+        imgLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+
+                Toast toast = Toast.makeText(SiswaActivity.this, "Terima Kasih", Toast.LENGTH_SHORT);
+                toast.show();
+
+                startActivity(new Intent(SiswaActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+    }
 }

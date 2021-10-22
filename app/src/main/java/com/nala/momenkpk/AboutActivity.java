@@ -30,6 +30,8 @@ public class AboutActivity extends AppCompatActivity {
             }
         }
 
+
+
         if (Build.VERSION.SDK_INT >= 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
