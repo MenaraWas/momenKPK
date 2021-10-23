@@ -50,22 +50,39 @@ class MainAdapter(private val context: Context,
 
         holder.rdGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
 
+            if(holder.rdGroup.checkedRadioButtonId == -1){
+                Toast.makeText(context, "radio button not selected", Toast.LENGTH_SHORT).show()
+            }else{
+                if(holder.radioButtonOpsi.isChecked){
+                    nilai = holder.radioButtonOpsi.getText().toString()
+                    Toast.makeText(context, "oke terklik", Toast.LENGTH_SHORT).show()
+                } else if(holder.radioButtonOpsi2.isChecked){
+                    nilai2 = holder.radioButtonOpsi2.getText().toString()
+                    Toast.makeText(context, "oke 2 terklik", Toast.LENGTH_SHORT).show()
+                } else if(holder.radioButtonOpsi3.isChecked){
+                    nilai3 = holder.radioButtonOpsi3.getText().toString()
+                    Toast.makeText(context, "oke 3 terklik", Toast.LENGTH_SHORT).show()
+                } else if(holder.radioButtonOpsi4.isChecked){
+                    nilai4 = holder.radioButtonOpsi4.getText().toString()
+                    Toast.makeText(context, "oke 4 terklik", Toast.LENGTH_SHORT).show()
+                }else if(holder.radioButtonOpsi5.isChecked){
+                    nilai5 = holder.radioButtonOpsi5.getText().toString()
+                    Toast.makeText(context, "oke 4 terklik", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-
-            nilai = holder.radioButtonOpsi.getText().toString()
-            nilai2 = holder.radioButtonOpsi2.getText().toString()
-            nilai3 = holder.radioButtonOpsi3.getText().toString()
-            nilai4 = holder.radioButtonOpsi4.getText().toString()
-            nilai5 = holder.radioButtonOpsi5.getText().toString()
+//            nilai3 = holder.radioButtonOpsi3.getText().toString()
+//            nilai4 = holder.radioButtonOpsi4.getText().toString()
+//            nilai5 = holder.radioButtonOpsi5.getText().toString()
 
             val intent = Intent("custom-message")
         //            intent.putExtra("quantity",Integer.parseInt(quantity.getText().toString()));
 
             intent.putExtra("item", nilai)
-            intent.putExtra("item", nilai2)
-            intent.putExtra("item", nilai3)
-            intent.putExtra("item", nilai4)
-            intent.putExtra("item2", nilai5)
+            intent.putExtra("item2", nilai2)
+            intent.putExtra("item3", nilai3)
+            intent.putExtra("item4", nilai4)
+            intent.putExtra("item5", nilai5)
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
 
         })

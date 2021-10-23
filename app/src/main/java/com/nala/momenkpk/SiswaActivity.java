@@ -55,7 +55,7 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
     private TextView tvNilai;
     private ImageView imgForm;
     private ImageView imgLogout;
-    private double total;
+    private String total;
     private String Item1;
     private String Item2;
     private String Item3;
@@ -93,8 +93,8 @@ public class SiswaActivity extends AppCompatActivity implements MainAdapter.Fire
                 mRecyclerView.setVisibility(View.GONE);
                 imgForm.setVisibility(View.VISIBLE);
 
-//                total=((Item1+Item2+Item3+Item4+Item5)/0.3);
-                tvNilai.setText(Item1 + " points");
+                total=((Item1+Item2+Item3+Item4+Item5));
+                tvNilai.setText(total + " points" + "/100 Points");
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
