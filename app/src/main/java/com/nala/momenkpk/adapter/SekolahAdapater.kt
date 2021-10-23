@@ -27,8 +27,8 @@ class SekolahAdapter(private val context: Context,
     override fun onBindViewHolder(holder: SekolahViewHolder, position: Int) {
 
 
-        holder.namaSekolah.text = (daftarSekolah?.get(position)?.nama)
-        holder.namaKepsek.text = (daftarSekolah?.get(position)?.Kepsek)
+        holder.namaSekolah.text = (daftarSekolah?.get(position)?.namaSekolah)
+        holder.namaKepsek.text = (daftarSekolah?.get(position)?.namaKepsek)
         holder.view.setOnClickListener { sekolahListener.onDataClick(daftarSekolah?.get(position), position) }
 
     }

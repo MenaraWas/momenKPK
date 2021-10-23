@@ -3,15 +3,15 @@ package com.nala.momenkpk.model
 class ModelSekolah {
 
     var key: String? = null
-    var nama: String? = null
-    var Kepsek: String? = null
+    var namaSekolah: String? = null
+    var namaKepsek: String? = null
     var id_sekolah: String? = null
 
     constructor() {}
 
-    constructor(namaSekolah: String?, namaKepsek: String?, idSekolah: String?) {
-        nama = namaSekolah
-        Kepsek = namaKepsek
-        id_sekolah = idSekolah
+    constructor(namaBarang: String?, namaKepala: String?, hargaBarang: String?) {
+        namaSekolah = namaBarang
+        namaKepsek = namaKepala
+        id_sekolah = hargaBarang
     }
 }

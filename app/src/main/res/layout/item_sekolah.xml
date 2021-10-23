@@ -38,14 +38,14 @@
 
         <TextView
             android:id="@+id/textviewSekolah"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/imageview1"
             android:text="Nama SMK"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold">
 
         </TextView>

@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
-        else if(password.contains("kepsek")){
+        else if(password.contains("kepsek") || password.contains("Kepsek")){
             startActivity(new Intent(LoginActivity.this, KepsekActivity.class));
             finish();
         }
